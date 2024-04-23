@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def home():
-    return "Api running"
+    return "Api running!!! >>>>>>>!!!!!!"
 
 @app.route("/hello", methods=["GET"])
 def say_hello():
