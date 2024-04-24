@@ -7,10 +7,24 @@ services:
       - "5000:5000"
     environment:
       FLASK_APP: app/my_flask.py
-      # without the following variables flask wont restart on code changes
       FLASK_ENV: development
-      FLASK_DEBUG: 1 
+      FLASK_DEBUG: 1
     volumes:
       - ./app:/flask/app   # This line binds the local 'app' directory to the '/flask/app' directory in the container -
       # it wont show up in docker desktop or docker volume ls presumably becausing it is bind volume?
-    command: ["flask", "run", "--host", "0.0.0.0"]
+  
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: examplepassword  # Change this to your desired root password
+      MYSQL_DATABASE: mydatabase            # Change this to your desired database name
+      MYSQL_USER: myuser                    # Change this to your desired username
+      MYSQL_PASSWORD: mypassword            # Change this to your desired password
+    ports:
+      - "3306:3306"                         # Expose MySQL port
+    volumes:
+      - mysql-data:/var/lib/mysql           # This line creates a named volume for MySQL data persistence
+
+volumes:
+  mysql-data:
