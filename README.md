@@ -36,6 +36,15 @@ Werkzeug==2.2.2 added to requirements after [errors running flask](https://stack
 
 
 
+- app/
+  - my_flask.py
+- Dockerfile
+- requirements.txt
+- docker-compose.yml
+
+
+
+
 ## Next steps
 
 Need to setup volumes so this useable in development \

@@ -7,6 +7,10 @@ services:
       - "5000:5000"
     environment:
       FLASK_APP: app/my_flask.py
-    command: ["flask", "run", "--host", "0.0.0.0"]
+      # without the following variables flask wont restart on code changes
+      FLASK_ENV: development
+      FLASK_DEBUG: 1 
     volumes:
-      - .:/flask
+      - ./app:/flask/app   # This line binds the local 'app' directory to the '/flask/app' directory in the container -
+      # it wont show up in docker desktop or docker volume ls presumably becausing it is bind volume?
+    command: ["flask", "run", "--host", "0.0.0.0"]
