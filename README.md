@@ -11,6 +11,17 @@ Upgarded docker-compose python / version
 `docker-compose logs -f app`
 `docker-compose logs -f db`
 
+`python3 -m pip list -v`
+
+## Discoveries
+
+Had to install `mysql-connector-python` instead of `mysql-connector` after adding templates
+as started getting
+
+```
+mysql.connector.errors.InterfaceError: 2003: Can't connect to MySQL server on 'db:3306' (111 Connection refused)
+```
+
 ## 3. Old notes for before docker-compose
 
 Normal:
