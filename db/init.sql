@@ -13,4 +13,5 @@ VALUES
   ('Galahad', 'yellow'),
   ('Gawain', 'red'),
   ('Accolon', 'teal'),
+  ('Pellinore', 'vermilion'),
   ('Percival', 'scarlet');

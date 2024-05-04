@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h1>Hi, {{ user.username }}!</h1>
+<!-- {% for post in posts %}
+    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %} -->
+<p>
+  Most web applications these days have a navigation bar at the top of the page with a few frequently used links, such
+  as a link to edit your profile, to login, logout, etc. I can easily add a navigation bar to the index.html template
+  with some more HTML, but as the <strong>application</strong> grows I will be needing this same navigation bar in other
+  pages. I don't really want to have to maintain several copies of the navigation bar in many HTML templates, it is a
+  good practice to not repeat yourself if that is possible.
+</p>
+{% endblock %}
