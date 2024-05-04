@@ -1,30 +1,57 @@
-version: '3.8'
-
+version: "3"
 services:
-  flask:
-    build: .
+  app:
+    build: ./app
+    links:
+      - db
     ports:
       - "5000:5000"
-    environment:
-      FLASK_APP: app/my_flask.py
-      FLASK_ENV: development
-      FLASK_DEBUG: 1
-    volumes:
-      - ./app:/flask/app   # This line binds the local 'app' directory to the '/flask/app' directory in the container -
-      # it wont show up in docker desktop or docker volume ls presumably becausing it is bind volume?
-  
-  mysql:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: examplepassword  # Change this to your desired root password
-      MYSQL_DATABASE: mydatabase            # Change this to your desired database name
-      MYSQL_USER: myuser                    # Change this to your desired username
-      MYSQL_PASSWORD: mypassword            # Change this to your desired password
-    ports:
-      - "3306:3306"                         # Expose MySQL port
-    volumes:
-      - mysql-data:/var/lib/mysql           # This line creates a named volume for MySQL data persistence
 
-volumes:
-  mysql-data:
+  db:
+    image: mysql:5.7
+    platform: linux/amd64 # Specify the platform here
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+# version: '3.8'
+
+# services:
+#   flask:
+#     build: .
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       FLASK_APP: app/my_flask.py
+#       FLASK_ENV: development
+#       FLASK_DEBUG: 1
+#     # networks:
+#     #   - mot_net
+#     # depends_on:
+#     #   - mysql_db
+#     volumes:
+#       - ./app:/flask/app   # This line binds the local 'app' directory to the '/flask/app' directory in the container -
+#       # it wont show up in docker desktop or docker volume ls presumably becausing it is bind volume?
+#     network_mode: "host"
+#   # mysql_db:
+#   #   image: mysql:5.7
+#   #   platform: linux/amd64   # Specify the platform here
+#   #   restart: always
+#   #   environment:
+#   #     MYSQL_ROOT_PASSWORD: easy123 # Change this to your desired password
+#   #     MYSQL_DATABASE: mydatabase
+#   #   networks:
+#   #     - mot_net
+#   #   ports:
+#   #     - "3306:3306"                         # Expose MySQL port
+#   #   volumes:
+#   #     - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+#   #     - mysql-data:/var/lib/mysql           # This line creates a named volume for MySQL data persistence
+
+# # networks:
+# #   mot_net:
+
+# volumes:
+#   mysql-data:
