@@ -1,9 +1,10 @@
 from typing import List, Dict
-from flask import Flask, render_template
 import mysql.connector
 import json
+from flask import Flask, render_template
 
 app = Flask(__name__)
+
 
 
 def favorite_colors() -> List[Dict]:
