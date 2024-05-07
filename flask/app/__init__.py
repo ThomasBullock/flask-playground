@@ -2,25 +2,29 @@ from typing import List, Dict
 import mysql.connector
 import json
 from flask import Flask, render_template
+from config import Config
+from .db import get_db
 
 app = Flask(__name__)
-
+app.config.from_object(Config)
 
 
 def favorite_colors() -> List[Dict]:
-    config = {
-        'user': 'root',
-        'password': 'root',
-        'host': 'db',
-        'port': '3306',
-        'database': 'knights'
-    }
-    connection = mysql.connector.connect(**config)
-    cursor = connection.cursor()
+    # config = {
+    #     'user': 'root',
+    #     'password': 'root',
+    #     'host': 'db',
+    #     'port': '3306',
+    #     'database': 'knights'
+    # }
+    # connection = mysql.connector.connect(**config)
+    # cursor = connection.cursor()
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
     cursor.execute('SELECT * FROM favorite_colors')
     results = [{name: color} for (name, color) in cursor]
     cursor.close()
-    connection.close()
+    # connection.close()
 
     return results
 

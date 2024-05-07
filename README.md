@@ -47,11 +47,14 @@ Host in Dockerfile must be:
 Based on [this](https://medium.com/geekculture/how-to-dockerize-your-flask-application-2d0487ecefb8) \
 Werkzeug==2.2.2 added to requirements after [errors running flask](https://stackoverflow.com/questions/77213053/why-did-flask-start-failing-with-importerror-cannot-import-name-url-quote-fr)
 
-- app/
-  - my_flask.py
-- Dockerfile
-- requirements.txt
-- docker-compose.yml
+- flask
+  - app/
+    - **init**.py
+  - config.py
+  - main.py
+  - Dockerfile
+  - requirements.txt
+- docker-compose.yaml
 
 ## Next steps
 

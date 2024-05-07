@@ -7,7 +7,9 @@ WORKDIR /app
 COPY requirements.txt /app
 COPY app/__init__.py /app/app/__init__.py
 COPY app/templates/ /app/app/templates
+COPY app/db.py /app/app/db.py
 COPY main.py /app/main.py
+COPY config.py /app/config.py
 
 RUN pip install -r requirements.txt
 
