@@ -60,3 +60,9 @@ Werkzeug==2.2.2 added to requirements after [errors running flask](https://stack
 
 Need to setup volumes so this useable in development \
 https://flask.palletsprojects.com/en/2.2.x/tutorial/factory/
+
+### Istanbul
+
+Get app into factory so we can use current_app
+https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/
+https://github.com/planetscale/mysql-for-python-developers/blob/main/webapp/final/hotel_management/db.py
