@@ -47,14 +47,20 @@ Host in Dockerfile must be:
 Based on [this](https://medium.com/geekculture/how-to-dockerize-your-flask-application-2d0487ecefb8) \
 Werkzeug==2.2.2 added to requirements after [errors running flask](https://stackoverflow.com/questions/77213053/why-did-flask-start-failing-with-importerror-cannot-import-name-url-quote-fr)
 
-- flask
-  - app/
-    - **init**.py
-  - config.py
-  - main.py
-  - Dockerfile
-  - requirements.txt
-- docker-compose.yaml
+```
+db/
+flask/
+  app/
+    controllers/
+      __init__.py
+      employee_controller.py
+    __init__.py
+    config.py
+    main.py
+  Dockerfile
+  requirements.txt
+docker-compose.yaml
+```
 
 ## Next steps
 
@@ -66,3 +72,9 @@ https://flask.palletsprojects.com/en/2.2.x/tutorial/factory/
 Get app into factory so we can use current_app
 https://flask.palletsprojects.com/en/2.1.x/patterns/appfactories/
 https://github.com/planetscale/mysql-for-python-developers/blob/main/webapp/final/hotel_management/db.py
+
+https://www.freecodecamp.org/news/structuring-a-flask-restplus-web-service-for-production-builds-c2ec676de563/
+https://github.com/vectornguyen76/flask-rest-api-template
+
+Example database class for wrapping mysql-connector for python
+https://gist.github.com/xeoncross/494947640a7dcfe8d91496988a5bf325

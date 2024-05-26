@@ -2,13 +2,14 @@ version: "3"
 services:
   app:
     build: ./flask
+    depends_on:
+      - db
     links:
       - db
     ports:
       - "5000:5000"
     volumes:
       - ./flask:/flask # This line binds the local 'flask' directory to the '/flask' directory in the container
-
   db:
     image: mysql:5.7
 
